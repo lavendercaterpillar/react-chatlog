@@ -1,6 +1,6 @@
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-// import TimeStamp from './TimeStamp';
+import TimeStamp from './TimeStamp';
 // import { useState } from 'react';
 
 
@@ -11,7 +11,7 @@ const ChatEntry = ({chats}) => {
       <h2 className="entry-name">{chats.sender}</h2>
       <section className="entry-bubble">
         <p>{chats.body}</p>
-        <p className="entry-time">{chats.timeStamp}</p>
+        <p className="entry-time"><TimeStamp time={chats.timeStamp} /></p>
         <button className="like">🤍</button>
         {/* <button className="like">{chats.liked ? '❤️' : '🤍'}</button> */}
       </section>
