@@ -3,7 +3,10 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ id, sender, body, timeStamp, liked }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, onLikeToggle }) => {
+  const heart = liked ? '❤️' : '🤍';
+
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{sender}</h2>
@@ -12,7 +15,9 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like">{liked ? '❤️' : '🤍'}</button>
+        <button className="like" onClick={() => onLikeToggle(id)}>
+          {heart}
+        </button>
       </section>
     </div>
   );
@@ -24,6 +29,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  onLikeToggle: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
